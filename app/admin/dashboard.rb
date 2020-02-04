@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 ActiveAdmin.register_page 'Dashboard' do
   menu priority: 1, label: proc { I18n.t('active_admin.dashboard') }
 
@@ -11,22 +13,30 @@ ActiveAdmin.register_page 'Dashboard' do
 
     # Here is an example of a simple dashboard with columns and panels.
     #
-    # columns do
-    #   column do
-    #     panel "Recent Posts" do
-    #       ul do
-    #         Post.recent(5).map do |post|
-    #           li link_to(post.title, admin_post_path(post))
-    #         end
-    #       end
-    #     end
-    #   end
-    #
-    #   column do
-    #     panel "Info" do
-    #       para "Welcome to ActiveAdmin."
-    #     end
-    #   end
-    # end
-  end # content
+    columns do
+      column do
+        panel 'Recent Orders' do
+          ul do
+            Order.last(5).reverse.map do |order|
+              li link_to "Order ##{order.id}", admin_order_path(order)
+            end
+          end
+        end
+      end
+
+      column do
+        panel 'Most featured products' do
+          products = Product.joins(:order_items).group(:product_id).count(:product_id)
+                            .sort_by(&:last).reverse.take(5).to_h
+          ul do
+            products.keys.map do |key|
+              product = Product.find(key)
+              li link_to product.name, admin_product_path(product)
+            end
+          end
+        end
+      end
+    end
+    # content
+  end
 end

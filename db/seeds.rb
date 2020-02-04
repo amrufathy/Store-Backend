@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 #
@@ -6,11 +8,13 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-
 require 'faker'
 
 # create admin
-Admin.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
+# if Rails.env.development?
+Admin.create!(name: 'Admin 1', email: 'admin@example.com', password: 'password',
+              password_confirmation: 'password')
+# end
 
 # create categories
 20.times do
@@ -37,7 +41,6 @@ puts 'Customers created...'
                   category: Category.find(category_id))
 end
 puts 'Products created...'
-
 
 # create orders (with details)
 500.times do
