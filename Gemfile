@@ -70,3 +70,5 @@ gem 'will_paginate', '~> 3.1.0'
 
 gem 'activeadmin'
 gem 'faker'
+
+gem 'omniauth-facebook'
