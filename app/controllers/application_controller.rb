@@ -2,7 +2,7 @@
 
 class ApplicationController < ActionController::Base
   devise_group :user, contains: %i[customer admin]
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!, except: %i[index show]
 
   def after_sign_in_path_for(_resource_or_scope)
     root_path
