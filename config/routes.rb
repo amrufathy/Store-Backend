@@ -3,17 +3,17 @@
 Rails.application.routes.draw do
   root 'welcome#index'
 
-  resources :order_items
-  resources :orders
   devise_for :admins, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
-  resources :admins
+
   devise_for :customers, controllers: { omniauth_callbacks: 'customers/omniauth_callbacks', sessions: 'customers/sessions' },
              path_names: { sign_in: 'login', sign_out: 'logout' }
   devise_scope :customer do
     get 'logout', to: 'devise/sessions#destroy', as: :destroy_customer_session
   end
 
+  resources :order_items
+  resources :orders
   resources :customers
   resources :products
   resources :categories
