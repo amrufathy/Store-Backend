@@ -2,7 +2,7 @@
 
 class AdminsController < ApplicationController
   before_action :set_admin, only: %i[show edit update destroy]
-  before_action :authenticate_admin!
+  # before_action :authenticate_admin!
 
   # GET /admins
   # GET /admins.json

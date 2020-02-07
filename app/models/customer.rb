@@ -17,9 +17,10 @@ class Customer < ApplicationRecord
   end
 
   def self.from_omniauth(auth)
-    where(provider: auth.provider, uid: auth.uid).first_or_create do |customer|
+    where(uid: auth.uid).first_or_create do |customer|
       customer.email = auth.info.email
       # customer.password = Devise.friendly_token[0, 20]
+      customer.token = auth.credentials.token
       customer.username = auth.info.name # assuming the customer model has a name
       customer.image = auth.info.image # assuming the customer model has an image
     end

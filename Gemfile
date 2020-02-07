@@ -72,3 +72,5 @@ gem 'activeadmin'
 gem 'faker'
 
 gem 'omniauth-facebook'
+gem 'koala'
+

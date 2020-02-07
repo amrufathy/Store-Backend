@@ -23,11 +23,11 @@ end
 puts 'Categories created...'
 
 # create customers
-Customer.create!(name: 'Amr', email: 'amr@example.com', password: 'password',
+Customer.create!(name: 'Amr', email: 'amr@example.com',
                  mobile_number: Faker::PhoneNumber.cell_phone, address: Faker::Address.full_address)
 49.times do
   name = Faker::Name.unique.name
-  Customer.create!(name: name, email: Faker::Internet.safe_email(name: name), password: Faker::Internet.password(mix_case: false),
+  Customer.create!(name: name, email: Faker::Internet.safe_email(name: name),
                    mobile_number: Faker::PhoneNumber.cell_phone, address: Faker::Address.full_address)
 end
 puts 'Customers created...'
