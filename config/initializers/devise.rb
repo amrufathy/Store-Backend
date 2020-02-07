@@ -261,8 +261,9 @@ Devise.setup do |config|
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
   config.omniauth :facebook, '2550877271676365', '8039f24f3bdb761e2fa503d734cc2b94', scope: 'public_profile, email',
-                  callback_url: 'http://localhost:3000/customers/auth/facebook/callback'
-                  # callback_url: 'https://macc-store-app.herokuapp.com/customers/auth/facebook/callback'
+                  # callback_url: 'http://localhost:3000/customers/auth/facebook/callback'
+                  callback_url: 'https://macc-store-app.herokuapp.com/customers/auth/facebook/callback'
+
 
 
   # ==> Warden configuration
