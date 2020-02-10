@@ -63,14 +63,12 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
-gem 'cancancan'
+gem 'activeadmin'
 gem 'devise'
-gem 'pundit'
 gem 'will_paginate', '~> 3.1.0'
 
-gem 'activeadmin'
 gem 'faker'
 
-gem 'omniauth-facebook'
 gem 'koala'
+gem 'omniauth-facebook'
 

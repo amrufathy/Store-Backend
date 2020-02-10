@@ -12,6 +12,8 @@ Rails.application.routes.draw do
     get 'logout', to: 'devise/sessions#destroy', as: :destroy_customer_session
   end
 
+  get '/check_mobile_login', to: 'customers#check_mobile_login'
+
   resources :order_items
   resources :orders
   resources :customers

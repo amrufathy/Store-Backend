@@ -25,4 +25,13 @@ class Customer < ApplicationRecord
       customer.image = auth.info.image # assuming the customer model has an image
     end
   end
+
+  def self.from_facebook(user)
+    where(uid: user.id).first_or_create! do |customer|
+      customer.email = user.email
+      customer.token = user.token
+      customer.username = user.name
+      customer.image = user.picture.url
+    end
+  end
 end
