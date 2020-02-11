@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class OrderItemsController < InheritedResources::Base
+  include Authenticatable
+
   private
 
   def order_item_params

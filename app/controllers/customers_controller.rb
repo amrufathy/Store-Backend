@@ -1,10 +1,15 @@
 # frozen_string_literal: true
 
 class CustomersController < ApplicationController
+  include Authenticatable
   before_action :set_customer, only: %i[show edit update destroy]
 
   def check_mobile_login
     render json: current_customer.uid if authenticate_mobile!
+  end
+
+  def orders
+    render json: current_customer.orders.order(id: :desc).decorate
   end
 
   # GET /customers

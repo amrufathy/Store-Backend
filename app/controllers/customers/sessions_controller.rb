@@ -3,6 +3,7 @@
 class Customers::SessionsController < Devise::SessionsController
   include Accessible
   skip_before_action :check_user, only: :destroy
+  skip_before_action :authenticate_mobile!
 
   # before_action :configure_sign_in_params, only: [:create]
 

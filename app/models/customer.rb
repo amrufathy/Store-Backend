@@ -20,9 +20,8 @@ class Customer < ApplicationRecord
     where(uid: auth.uid).first_or_create do |customer|
       customer.uid = auth.uid
       customer.email = auth.info.email
-      # customer.password = Devise.friendly_token[0, 20]
       customer.token = auth.credentials.token
-      customer.username = auth.info.name # assuming the customer model has a name
+      customer.name = auth.info.name # assuming the customer model has a name
       customer.image = auth.info.image # assuming the customer model has an image
     end
   end
@@ -32,7 +31,7 @@ class Customer < ApplicationRecord
       customer.uid = user.id
       customer.email = user.email
       customer.token = user.token
-      customer.username = user.name
+      customer.name = user.name
       customer.image = user.picture['data']['url']
     end
   end

@@ -10,6 +10,8 @@ Rails.application.routes.draw do
              path_names: { sign_in: 'login', sign_out: 'logout' }
 
   get '/check_mobile_login', to: 'customers#check_mobile_login'
+  get '/customer/orders', to: 'customers#orders'
+  get '/orders/:id/items', to: 'orders#items'
 
   resources :order_items
   resources :orders

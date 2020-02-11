@@ -3,6 +3,7 @@
 class Customers::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   # You should configure your model like this:
   # devise :omniauthable, omniauth_providers: [:twitter]
+  skip_before_action :authenticate_mobile!
 
   # You should also create an action method in this controller like this:
   # def twitter

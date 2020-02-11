@@ -12,7 +12,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20_200_206_215_607) do
+ActiveRecord::Schema.define(version: 20_200_211_145_144) do
   create_table 'active_admin_comments', options: 'ENGINE=InnoDB DEFAULT CHARSET=utf8', force: :cascade do |t|
     t.string 'namespace'
     t.text 'body'
@@ -57,9 +57,7 @@ ActiveRecord::Schema.define(version: 20_200_206_215_607) do
     t.string 'reset_password_token'
     t.datetime 'reset_password_sent_at'
     t.datetime 'remember_created_at'
-    t.string 'provider'
     t.string 'uid'
-    t.string 'username'
     t.text 'image'
     t.string 'token'
     t.index ['email'], name: 'index_customers_on_email', unique: true

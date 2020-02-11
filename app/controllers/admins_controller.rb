@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class AdminsController < ApplicationController
+  include Authenticatable
   before_action :set_admin, only: %i[show edit update destroy]
 
   # GET /admins

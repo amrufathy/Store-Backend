@@ -65,10 +65,8 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 gem 'activeadmin'
 gem 'devise'
-gem 'will_paginate', '~> 3.1.0'
-
+gem 'draper'
 gem 'faker'
-
 gem 'koala'
 gem 'omniauth-facebook'
-
+gem 'will_paginate', '~> 3.1.0'
