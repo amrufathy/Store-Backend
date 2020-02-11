@@ -35,7 +35,7 @@ class Customers::OmniauthCallbacksController < Devise::OmniauthCallbacksControll
       sign_in_and_redirect @customer, event: :authentication
       set_flash_message(:notice, :success, kind: 'Facebook') if is_navigational_format?
     else
-      session['devise.facebook_data'] = request.env['omniauth.auth']
+      session['devise.facebook_data'] = omniauth_params
       # TODO: change path
       redirect_to new_customer_registration_path
     end

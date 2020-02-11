@@ -4,16 +4,7 @@ class CustomersController < ApplicationController
   before_action :set_customer, only: %i[show edit update destroy]
 
   def check_mobile_login
-    token = params[:token]
-
-    @graph = Koala::Facebook::API.new(token)
-    user = @graph.get_object('me?fields=id,name,email,picture')
-    user['token'] = token
-    user = OpenStruct.new(user)
-
-    Customer.from_facebook(user)
-
-    render json: user.id
+    render json: current_customer.uid
   end
 
   # GET /customers

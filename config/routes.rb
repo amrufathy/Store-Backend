@@ -8,9 +8,6 @@ Rails.application.routes.draw do
 
   devise_for :customers, controllers: { omniauth_callbacks: 'customers/omniauth_callbacks', sessions: 'customers/sessions' },
              path_names: { sign_in: 'login', sign_out: 'logout' }
-  devise_scope :customer do
-    get 'logout', to: 'devise/sessions#destroy', as: :destroy_customer_session
-  end
 
   get '/check_mobile_login', to: 'customers#check_mobile_login'
 
