@@ -4,7 +4,7 @@ class CustomersController < ApplicationController
   before_action :set_customer, only: %i[show edit update destroy]
 
   def check_mobile_login
-    render json: current_customer.uid
+    render json: current_customer.uid if authenticate_mobile!
   end
 
   # GET /customers
