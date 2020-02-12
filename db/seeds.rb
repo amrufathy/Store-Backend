@@ -22,41 +22,38 @@ Admin.create!(name: 'Admin 1', email: 'admin@example.com', password: 'password',
 end
 puts 'Categories created...'
 
-# # create customers
-# Customer.create!(name: 'Amr', email: 'amr@example.com',
-#                  mobile_number: Faker::PhoneNumber.cell_phone, address: Faker::Address.full_address)
-# 49.times do
-#   name = Faker::Name.unique.name
-#   Customer.create!(name: name, email: Faker::Internet.safe_email(name: name),
-#                    mobile_number: Faker::PhoneNumber.cell_phone, address: Faker::Address.full_address)
-# end
-# puts 'Customers created...'
+# create customers
+Customer.create!(name: 'Amr', email: 'amr@example.com',
+                 mobile_number: Faker::PhoneNumber.cell_phone, address: Faker::Address.full_address)
+49.times do
+  name = Faker::Name.unique.name
+  Customer.create!(name: name, email: Faker::Internet.safe_email(name: name),
+                   mobile_number: Faker::PhoneNumber.cell_phone, address: Faker::Address.full_address)
+end
+puts 'Customers created...'
 
 # create products
 200.times do
-  category_id = Faker::Number.between(from: 1, to: Category.count)
-
   Product.create!(name: Faker::Commerce.product_name, price: Faker::Commerce.price,
                   description: Faker::Lorem.paragraph(sentence_count: 5), stock: Faker::Number.within(range: 1..15),
-                  category: Category.find(category_id))
+                  category: Category.order('RAND()').first)
 end
 puts 'Products created...'
 
 # create orders (with details)
 500.times do
-  customer_id = Faker::Number.between(from: 1, to: Customer.count)
+  customer = Customer.order('RAND()').first
 
-  order = Order.create!(customer: Customer.find(customer_id))
+  order = Order.create!(customer: customer)
   num_items = Faker::Number.within(range: 3..6)
   total_cost = 0
 
   num_items.times do
-    product_id = Faker::Number.between(from: 1, to: Product.count)
-    product = Product.find(product_id)
+    product = Product.order('RAND()').first
     quantity = Faker::Number.within(range: 1..5)
     total_cost += quantity * product.price
 
-    OrderItem.create!(customer: Customer.find(customer_id), product: Product.find(product_id),
+    OrderItem.create!(customer: customer, product: product,
                       order: order, quantity: quantity, cost: quantity * product.price)
   end
 
