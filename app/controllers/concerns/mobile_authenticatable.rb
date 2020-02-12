@@ -8,6 +8,7 @@ module MobileAuthenticatable
   protected
 
   def authenticate_mobile!
+    params.require :token
     token = params[:token]
 
     graph = Koala::Facebook::API.new(token)
