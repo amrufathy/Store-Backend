@@ -22,15 +22,15 @@ Admin.create!(name: 'Admin 1', email: 'admin@example.com', password: 'password',
 end
 puts 'Categories created...'
 
-# create customers
-Customer.create!(name: 'Amr', email: 'amr@example.com',
-                 mobile_number: Faker::PhoneNumber.cell_phone, address: Faker::Address.full_address)
-49.times do
-  name = Faker::Name.unique.name
-  Customer.create!(name: name, email: Faker::Internet.safe_email(name: name),
-                   mobile_number: Faker::PhoneNumber.cell_phone, address: Faker::Address.full_address)
-end
-puts 'Customers created...'
+# # create customers
+# Customer.create!(name: 'Amr', email: 'amr@example.com',
+#                  mobile_number: Faker::PhoneNumber.cell_phone, address: Faker::Address.full_address)
+# 49.times do
+#   name = Faker::Name.unique.name
+#   Customer.create!(name: name, email: Faker::Internet.safe_email(name: name),
+#                    mobile_number: Faker::PhoneNumber.cell_phone, address: Faker::Address.full_address)
+# end
+# puts 'Customers created...'
 
 # create products
 200.times do
