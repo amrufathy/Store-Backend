@@ -41,22 +41,22 @@ end
 puts 'Products created...'
 
 # create orders (with details)
-500.times do
-  customer = Customer.order('RAND()').first
-
-  order = Order.create!(customer: customer)
-  num_items = Faker::Number.within(range: 3..6)
-  total_cost = 0
-
-  num_items.times do
-    product = Product.order('RAND()').first
-    quantity = Faker::Number.within(range: 1..5)
-    total_cost += quantity * product.price
-
-    OrderItem.create!(customer: customer, product: product,
-                      order: order, quantity: quantity, cost: quantity * product.price)
-  end
-
-  order.update(cost: total_cost)
-end
-puts 'Orders created...'
+# 50.times do
+#   customer = Customer.order('RAND()').first
+#
+#   order = Order.create!(customer: customer)
+#   num_items = Faker::Number.within(range: 3..6)
+#   total_cost = 0
+#
+#   num_items.times do
+#     product = Product.order('RAND()').first
+#     quantity = Faker::Number.within(range: 1..5)
+#     total_cost += quantity * product.price
+#
+#     OrderItem.create!(customer: customer, product: product,
+#                       order: order, quantity: quantity, cost: quantity * product.price)
+#   end
+#
+#   order.update(cost: total_cost)
+# end
+# puts 'Orders created...'
